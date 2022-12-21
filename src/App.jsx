@@ -3,13 +3,11 @@ import Header from "./Components/Header/Header";
 import Main from "./Components/Main/Main";
 import "./App.scss";
 
-function App(props) {
-  const movieInfo = props.store.movieInfo;
-
+function App() {
   return (
     <div className='App'>
       <Header />
-      <Main movieInfo={movieInfo} />
+      <Main />
       <Footer />
     </div>
   );
