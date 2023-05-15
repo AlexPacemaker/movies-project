@@ -5,7 +5,7 @@ import styles from "./Footer.module.scss";
 const Footer = () => {
   return (
     <div className={styles.footer}>
-      <footer className='page-footer #4db6ac teal lighten-2'>
+      <footer className='page-footer #1e88e5 blue darken-1'>
         <div className='container'>
           <div className='row'>
             <div className='col l6 s12'>

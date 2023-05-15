@@ -49,7 +49,7 @@ const Main = () => {
     movies && movies.length ? (
       movies.map((movie) => <Card {...movie} key={movie.imdbID} />)
     ) : (
-      <h3>No movies found. Please try again!</h3>
+      <h3 className={styles.notFound}>No movies found. Please try again!</h3>
     );
 
   return (

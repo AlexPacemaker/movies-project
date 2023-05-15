@@ -32,16 +32,16 @@ const Search = ({ searchMovies }) => {
               onKeyDown={handleKey}
             />
             <button
-              className='btn search-btn'
+              className='btn search-btn #1e88e5 blue darken-1'
               onClick={() => searchMovies(search, type)}
             >
               Search
             </button>
           </div>
-          <div>
+          <div className='center-align'>
             <label>
               <input
-                className='with-gap'
+                className='with-gap #1e88e5 blue darken-1'
                 name='type'
                 type='radio'
                 data-type='all'
