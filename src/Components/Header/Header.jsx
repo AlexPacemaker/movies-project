@@ -3,14 +3,18 @@
 import styles from "./Header.module.scss";
 
 const Header = () => {
+  const handleClick = () => {
+    window.location.reload();
+  };
+
   return (
     <div className={styles.navMaine}>
       <nav className='#1e88e5 blue darken-1'>
         <div className='nav-wrapper'>
           <div className={styles.refs}>
-            <a href='#s' className={styles.brandLogo}>
+            <span onClick={handleClick} className={styles.brandLogo}>
               React Movie DB
-            </a>
+            </span>
             <ul id='nav-mobile' className='right hide-on-med-and-down'>
               <li>
                 <a href='https://github.com/AlexPacemaker' target='blank'>
