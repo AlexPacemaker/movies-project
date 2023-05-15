@@ -1,55 +1,64 @@
-//Main
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../Card/Card";
 import Preloader from "../Preloader/Preloader";
 import Search from "../Search/Search";
 import styles from "./Main.module.scss";
 
-const API_URl = "http://www.omdbapi.com/?apikey=1304f3a9&s=x-files";
+const API_KEY = process.env.REACT_APP_API_KEY;
+const API_URL = `https://www.omdbapi.com/?apikey=${API_KEY}&s=terminator`;
 
 const Main = () => {
   const [movies, setMovies] = useState([]);
-  const [error, setError] = useState("");
-  const [isLoading, setIsloading] = useState(true);
+  const [loading, setLoading] = useState(true);
+
+  const searchMovies = (str, type = "all") => {
+    setLoading(true);
+    fetch(
+      `https://www.omdbapi.com/?apikey=${API_KEY}&s=${str}${
+        type !== "all" ? `&type=${type}` : ""
+      }`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setMovies(data.Search);
+        setLoading(false);
+        console.log(data.Search);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
+  };
 
   useEffect(() => {
-    (async function () {
+    async function fetchMovies() {
       try {
-        const res = await fetch(API_URl);
-        const movies = await res.json();
-        setMovies(movies.Search);
+        const res = await fetch(API_URL);
+        const data = await res.json();
+        setMovies(data.Search);
+        setLoading(false);
       } catch (error) {
-        setError(error.message);
+        console.error(error);
+        setLoading(false);
       }
-      setIsloading(false);
-    })();
+    }
+    fetchMovies();
   }, []);
 
-  useEffect((str) => {
-    (async function Search() {
-      try {
-        const res = await fetch(`http://www.omdbapi.com/?apikey=1304f3a9&s=${str}`);
-        const movies = await res.json();
-        setMovies(movies.Search);
-      } catch (error) {
-        setError(error.message);
-      }
-      setIsloading(false);
-    })();
-  }, []);
-
-  if (error) {
-    return <h1>Error: {error}</h1>;
-  }
+  const moviesCards =
+    movies && movies.length ? (
+      movies.map((movie) => <Card {...movie} key={movie.imdbID} />)
+    ) : (
+      <h3>No movies found. Please try again!</h3>
+    );
 
   return (
-    <div>
-      <Search searchMovies={Search} />
+    <>
+      <Search searchMovies={searchMovies} />
       <div className={styles.container}>
-        {isLoading ? <Preloader /> : movies.map((movie) => <Card {...movie} key={movie.imdbID} />)}
+        {loading ? <Preloader /> : moviesCards}
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,0 +1,33 @@
+@font-face {
+  font-family: "OpenSans";
+  src: url(./Assets/Fonts/OpenSans-Light.ttf);
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url(./Assets/Fonts/OpenSans-SemiBold.ttf);
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  font-family: "Open Sans", sans-serif;
+  scroll-behavior: smooth;
+  a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+

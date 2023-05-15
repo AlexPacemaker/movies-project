@@ -1,31 +1,33 @@
 .cardOfMovie {
-  width: 300px;
-  height: 440px;
-  border: 0px solid silver;
-  border-radius: 10px;
-  margin: 10px 20px 10px 20px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 
-  padding: 20px;
+  padding: 5px;
   text-align: center;
+  transition: 0.5s ease-in-out;
   &:hover {
-    cursor: pointer;
-    box-shadow: 2px 2px 10px 5px grey;
-    transform: translateY(-5px);
-    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+    box-shadow: 0 0 15px 5px grey;
+    transform: translateY(-8px);
+    transition: 0.5s ease-in-out;
   }
 
-  h3 {
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  .title {
+    max-width: 400px;
+    overflow: hidden;
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
   }
   img {
-    padding: 10px;
+    padding: 2px;
     margin-bottom: 10px;
-    border: 2px ridge silver;
-    border-radius: 10px;
-    margin-left: 20px;
+    border: 1px ridge silver;
+    border-radius: 15px;
+    margin-left: 30px;
     margin-right: 30px;
   }
   p {

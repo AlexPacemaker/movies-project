@@ -1,38 +1,82 @@
 // Search
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Search.module.scss";
 
-class Search extends React.Component {
-  state = {
-    search: "",
+const Search = ({ searchMovies }) => {
+  const [search, setSearch] = useState("");
+  const [type, setType] = useState("all");
+
+  const handleKey = (event) => {
+    if (event.key === "Enter") {
+      searchMovies(search, type);
+    }
   };
 
-  handlekey = (event) => {
-    if(event.key ==='Enter') {
-        this.props.searchMovies(this.state.search)
-    }
-  }
+  const handleFilter = (event) => {
+    const selectedType = event.target.dataset.type;
+    setType(selectedType);
+    searchMovies(search, selectedType);
+  };
 
-  render() {
-    return (
-      <div className='row'>
-        <div className='col s12'>
-          <div className='input-field'>
-            <div className={styles.input}>
+  return (
+    <div className='row'>
+      <div className='col s12'>
+        <div className='input-field'>
+          <div className={styles.input}>
+            <input
+              placeholder='search...'
+              type='search'
+              className='validate'
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              onKeyDown={handleKey}
+            />
+            <button
+              className='btn search-btn'
+              onClick={() => searchMovies(search, type)}
+            >
+              Search
+            </button>
+          </div>
+          <div>
+            <label>
               <input
-                placeholder='search...'
-                type='search'
-                className='validate'
-                value={this.state.search}
-                onChange={(event) => this.setState({ search: event.target.value })}
-                onKeyDown={this.handlekey}
+                className='with-gap'
+                name='type'
+                type='radio'
+                data-type='all'
+                onChange={handleFilter}
+                checked={type === "all"}
               />
-            </div>
+              <span>All</span>
+            </label>
+            <label>
+              <input
+                className='with-gap'
+                name='type'
+                type='radio'
+                data-type='movie'
+                onChange={handleFilter}
+                checked={type === "movie"}
+              />
+              <span>Movies only</span>
+            </label>
+            <label>
+              <input
+                className='with-gap'
+                name='type'
+                type='radio'
+                data-type='series'
+                onChange={handleFilter}
+                checked={type === "series"}
+              />
+              <span>Series only</span>
+            </label>
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Search;
