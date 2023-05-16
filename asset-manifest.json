@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3e2cb88d.css",
+    "main.js": "/static/js/main.2c52a4db.js",
+    "static/media/OpenSans-Light.ttf": "/static/media/OpenSans-Light.6d0ca57e8101dc207b5c.ttf",
+    "static/media/OpenSans-SemiBold.ttf": "/static/media/OpenSans-SemiBold.00cfdcf664f140368569.ttf",
+    "static/media/na.jpg": "/static/media/na.b03a86be4dba529029fd.jpg",
+    "index.html": "/index.html",
+    "main.3e2cb88d.css.map": "/static/css/main.3e2cb88d.css.map",
+    "main.2c52a4db.js.map": "/static/js/main.2c52a4db.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3e2cb88d.css",
+    "static/js/main.2c52a4db.js"
+  ]
+}
