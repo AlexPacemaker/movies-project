@@ -8,4 +8,4 @@
     - CSS-Modules  for better organisation of CSS
     - Materialize CSS
 
-https://github.com/AlexPacemaker/movies-project
+https://alexpacemaker.github.io/movies-project/index.html
