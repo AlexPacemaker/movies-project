@@ -29,7 +29,10 @@ const Header = () => {
                 </a>
               </li>
               <li>
-                <a href='https://github.com/AlexPacemaker/movies-project'>
+                <a
+                  href='https://github.com/AlexPacemaker/movies-project'
+                  target='blank'
+                >
                   Code Source
                 </a>
               </li>
