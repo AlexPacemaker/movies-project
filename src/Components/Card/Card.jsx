@@ -1,5 +1,4 @@
 //Card of item
-
 import styles from "./Card.module.scss";
 import naImage from "../../Assets/images/na.jpg"; // импортируем картинку NA
 
