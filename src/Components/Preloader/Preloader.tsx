@@ -1,6 +1,5 @@
 // Preloader
-
-const Preloader = () => {
+const Preloader: React.FC = () => {
   return (
     <div className='progress'>
       <div className='indeterminate'></div>
