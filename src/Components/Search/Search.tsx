@@ -2,11 +2,15 @@
 import React, { useState } from "react";
 import styles from "./Search.module.scss";
 
-const Search = ({ searchMovies }) => {
+type TSearch = {
+  searchMovies: (str: string, type?: string) => void;
+};
+
+const Search = ({ searchMovies }: TSearch) => {
   const [search, setSearch] = useState("");
   const [type, setType] = useState("all");
 
-  const handleKey = (event) => {
+  const handleKey = (event: { key: string; }) => {
     if (event.key === "Enter") {
       searchMovies(search, type);
     }

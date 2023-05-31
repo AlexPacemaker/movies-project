@@ -1,28 +1,25 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
 import Preloader from "../Preloader/Preloader";
 import Search from "../Search/Search";
 import styles from "./Main.module.scss";
 import axios from "axios";
+import { Movie as MovieType } from "../../@types/types";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const API_URL = `https://www.omdbapi.com/?apikey=${API_KEY}&s=terminator`;
 
-interface Movie {
-  Title: string;
-  Year: string;
-  imdbID: string;
-  Type: string;
-  Poster: string;
+interface MainState {
+  movies: MovieType[];
+  loading: boolean;
 }
 
-const Main = () => {
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(true);
+const Main: React.FC = () => {
+  const [state, setState] = useState<MainState>({ movies: [], loading: true });
 
   //функция скортировки по категориям
-  const searchMovies = (str, type = "all") => {
-    setLoading(true);
+  const searchMovies = (str: string, type = "all") => {
+    setState({ ...state, loading: true });
     axios
       .get(
         `https://www.omdbapi.com/?apikey=${API_KEY}&s=${str}${
@@ -30,12 +27,11 @@ const Main = () => {
         }`
       )
       .then((res) => {
-        setMovies(res.data.Search);
-        setLoading(false);
+        setState({ movies: res.data.Search, loading: false });
       })
       .catch((error) => {
         console.log(error);
-        setLoading(false);
+        setState({ ...state, loading: true });
       });
   };
 
@@ -44,20 +40,21 @@ const Main = () => {
     try {
       (async () => {
         await axios.get(API_URL).then((res) => {
-          setMovies(res.data.Search);
-          setLoading(false);
+          setState({ movies: res.data.Search, loading: false });
         });
       })();
     } catch (error) {
       console.log(error);
-      setLoading(false);
+      setState({ ...state, loading: true });
     }
   }, []);
 
   //рефактор карточек и проверка на то, что данные полученные
   const moviesCards =
-    movies && movies.length ? (
-      movies.map((movie) => <Card {...movie} key={movie.imdbID} />)
+    state.movies && state.movies.length ? (
+      state.movies.map((movie: MovieType) => (
+        <Card {...movie} key={movie.imdbID} />
+      ))
     ) : (
       <h3 className={styles.notFound}>No movies found. Please try again!</h3>
     );
@@ -67,7 +64,7 @@ const Main = () => {
     <>
       <Search searchMovies={searchMovies} />
       <div className={styles.container}>
-        {loading ? <Preloader /> : moviesCards}
+        {state.loading ? <Preloader /> : moviesCards}
       </div>
     </>
   );
