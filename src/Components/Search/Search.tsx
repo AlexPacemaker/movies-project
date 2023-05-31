@@ -16,8 +16,8 @@ const Search = ({ searchMovies }: TSearch) => {
     }
   };
 
-  const handleFilter = (event: React.SyntheticEvent<HTMLElement>) => {
-    const selectedType = event.target.dataset.type;
+  const handleFilter = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const selectedType = (event.target as HTMLInputElement).dataset.type;
     setType(selectedType);
     searchMovies(search, selectedType);
   };
