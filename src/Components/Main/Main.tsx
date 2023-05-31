@@ -8,6 +8,14 @@ import axios from "axios";
 const API_KEY = process.env.REACT_APP_API_KEY;
 const API_URL = `https://www.omdbapi.com/?apikey=${API_KEY}&s=terminator`;
 
+interface Movie {
+  Title: string;
+  Year: string;
+  imdbID: string;
+  Type: string;
+  Poster: string;
+}
+
 const Main = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);

@@ -1,8 +1,14 @@
 //Card of item
 import styles from "./Card.module.scss";
 import naImage from "../../Assets/images/na.jpg"; // импортируем картинку NA
+import { Movie } from "../../@types/types";
 
-const Card = ({ Title: title, Year: year, Poster: imgSrc }) => {
+interface CardProps {
+  movie: Movie;
+}
+
+const Card = ({ movie }: CardProps) => {
+  const { Title: title, Year: year, Poster: imgSrc } = movie;
   return (
     <div className={styles.cardOfMovie}>
       <h3 className={styles.title}>{title}</h3>
