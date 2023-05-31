@@ -10,13 +10,13 @@ const Search = ({ searchMovies }: TSearch) => {
   const [search, setSearch] = useState("");
   const [type, setType] = useState("all");
 
-  const handleKey = (event: { key: string; }) => {
+  const handleKey = (event: { key: string }) => {
     if (event.key === "Enter") {
       searchMovies(search, type);
     }
   };
 
-  const handleFilter = (event) => {
+  const handleFilter = (event: React.SyntheticEvent<HTMLElement>) => {
     const selectedType = event.target.dataset.type;
     setType(selectedType);
     searchMovies(search, selectedType);
