@@ -1,7 +1,8 @@
 // Header component
+import React from "react";
 import styles from "./Header.module.scss";
 
-const Header = () => {
+const Header: React.FC = () => {
   const handleClick = () => {
     window.location.reload();
   };
