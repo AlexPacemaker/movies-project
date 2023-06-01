@@ -16,10 +16,12 @@ const Search = ({ searchMovies }: TSearch) => {
     }
   };
 
-  const handleFilter = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedType = (event.target as HTMLInputElement).dataset.type;
-    setType(selectedType);
-    searchMovies(search, selectedType);
+    if (selectedType) {
+      setType(selectedType);
+      searchMovies(search, selectedType);
+    }
   };
 
   return (
