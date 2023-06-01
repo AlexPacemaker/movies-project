@@ -1,6 +1,7 @@
 ##This project was created using the following technologies:
 
     - React 18
+    - TypeScript
     - Axios to get API data from the backend
     - React Hooks  to manage the state of components
     - Prettier  to format code
