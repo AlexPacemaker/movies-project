@@ -10,7 +10,7 @@ const Search = ({ searchMovies }: TSearch) => {
   const [search, setSearch] = useState("");
   const [type, setType] = useState("all");
 
-  const handleKey = (event: { key: string }) => {
+  const handleKey = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
       searchMovies(search, type);
     }

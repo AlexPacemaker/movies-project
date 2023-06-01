@@ -53,7 +53,7 @@ const Main: React.FC = () => {
   const moviesCards =
     state.movies && state.movies.length ? (
       state.movies.map((movie: MovieType) => (
-        <Card {...movie} key={movie.imdbID} />
+        <Card movie={movie} key={movie.imdbID} />
       ))
     ) : (
       <h3 className={styles.notFound}>No movies found. Please try again!</h3>
