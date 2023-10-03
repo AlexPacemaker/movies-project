@@ -3,11 +3,8 @@ import styles from "./Card.module.scss";
 import naImage from "../../Assets/images/na.jpg"; // импортируем картинку NA
 import { Movie } from "../../@types/types";
 
-interface CardProps {
-  movie: Movie;
-}
 
-const Card = ({ movie }: CardProps) => {
+const Card = ({ movie }: CardProps):JSX.Element => {
   const { Title: title, Year: year, Poster: imgSrc } = movie;
   return (
     <div className={styles.cardOfMovie}>
