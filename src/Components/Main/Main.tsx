@@ -5,8 +5,8 @@ import Search from "../Search/Search";
 import styles from "./Main.module.scss";
 import axios from "axios";
 import { Movie as MovieType } from "../../@types/types";
+import { API_KEY } from "../../config";
 
-const API_KEY = process.env.REACT_APP_API_KEY;
 const API_URL = `https://www.omdbapi.com/?apikey=${API_KEY}&s=terminator`;
 
 interface MainState {
