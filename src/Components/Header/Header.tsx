@@ -2,7 +2,8 @@
 import React from "react";
 import styles from "./Header.module.scss";
 
-const Header: React.FC = () => {
+const Header = (): JSX.Element => {
+  //функция для бэка на главную страницу
   const handleClick = () => {
     window.location.reload();
   };
@@ -22,18 +23,12 @@ const Header: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a
-                  href='https://alexpacemaker.github.io/portfolio/'
-                  target='blank'
-                >
+                <a href='https://alexpacemaker.github.io/portfolio/' target='blank'>
                   Portfolio
                 </a>
               </li>
               <li>
-                <a
-                  href='https://github.com/AlexPacemaker/movies-project'
-                  target='blank'
-                >
+                <a href='https://github.com/AlexPacemaker/movies-project' target='blank'>
                   Code Source
                 </a>
               </li>
