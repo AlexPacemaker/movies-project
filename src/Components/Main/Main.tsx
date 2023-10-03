@@ -21,11 +21,7 @@ const Main: React.FC = () => {
   const searchMovies = (str: string, type = "all") => {
     setState({ ...state, loading: true });
     axios
-      .get(
-        `https://www.omdbapi.com/?apikey=${API_KEY}&s=${str}${
-          type !== "all" ? `&type=${type}` : ""
-        }`
-      )
+      .get(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${str}${type !== "all" ? `&type=${type}` : ""}`)
       .then((res) => {
         setState({ movies: res.data.Search, loading: false });
       })
@@ -47,14 +43,13 @@ const Main: React.FC = () => {
       console.log(error);
       setState({ ...state, loading: true });
     }
+    //eslint-disable-next-line
   }, []);
 
   //рефактор карточек и проверка на то, что данные полученные
   const moviesCards =
     state.movies && state.movies.length ? (
-      state.movies.map((movie: MovieType) => (
-        <Card movie={movie} key={movie.imdbID} />
-      ))
+      state.movies.map((movie: MovieType) => <Card movie={movie} key={movie.imdbID} />)
     ) : (
       <h3 className={styles.notFound}>No movies found. Please try again!</h3>
     );
@@ -63,9 +58,7 @@ const Main: React.FC = () => {
   return (
     <>
       <Search searchMovies={searchMovies} />
-      <div className={styles.container}>
-        {state.loading ? <Preloader /> : moviesCards}
-      </div>
+      <div className={styles.container}>{state.loading ? <Preloader /> : moviesCards}</div>
     </>
   );
 };
